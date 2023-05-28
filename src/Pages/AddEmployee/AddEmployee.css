@@ -1,0 +1,15 @@
+.emp-section {
+    position: relative;
+
+}
+
+.form-section {
+    position: absolute;
+    width: 700px;
+    background-color: white;
+    padding: 45px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+
+}

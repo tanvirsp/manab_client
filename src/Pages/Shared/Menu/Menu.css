@@ -1,0 +1,75 @@
+nav{
+    padding: 35px 0 35px 35px;
+}
+.logo {
+    height: 50px;
+    margin-bottom: 45px;
+}
+
+.nav-bar li a {
+    display: inline-block;
+    padding: 9px ;
+    text-decoration: none;
+    color: #BDC3C7;
+    font-size: 17px;
+    /* transition: all 300ms; */
+}
+
+.nav-bar li {
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar li a:hover {
+    color:#ECF0F1;
+  
+}
+
+
+
+.nav-bar li a.active {
+    color:#0E0E23;
+    background-color: #EAEDF7;
+    width: 100%;
+    border-radius: 50px 0 0 50px;
+}
+
+.nav-bar li a.active svg {
+    color: white;
+    font-size: 30px;
+    background-color: #C60202;
+    padding: 5px;
+    /* display: inline-block; */
+    border-radius: 50%;
+}
+
+.nav-bar li a svg {
+    margin-right: 10px
+}
+
+.left-bar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%
+}
+
+.author-info{
+    text-align: center;
+    color: white;
+    padding-bottom: 75px;
+}
+
+.author-info h5 {
+    font-size: 22px;
+    font-weight: 300;
+    margin: 20px 0 15px  0;
+}
+
+
+.author-info img {
+    width: 120px;
+    border-radius: 50%;
+    border: 2px solid red;
+    box-shadow: 0 0 50px 2px red;
+}

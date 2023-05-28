@@ -1,0 +1,49 @@
+.login-section {
+    width: 500px;
+    background-color: white;
+    /* height: 400px; */
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 35px;
+    border-radius: 35px;
+    border: 1px solid rgba(0, 0, 0, 0.127);
+    /* border-image: linear-gradient(#C42026, #7B8284) 30;
+    border-width: 3px;
+    border-style: solid; */
+}
+
+.form-head  h2{
+    text-align: center;
+    margin-top: 15px;
+    font-size: 45px;
+}
+
+.form-head img{
+    width: 140px;
+    position: absolute;
+    top: -85px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    animation-name: running;
+    animation-duration: 4s;
+    
+}
+
+
+
+.form-head img {
+    animation: App-logo-spin infinite 4000ms linear;
+}
+
+
+@keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
