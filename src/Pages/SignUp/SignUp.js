@@ -1,44 +1,67 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './SignUp.css';
 import logo from '../../Assets/logo_icon.png'
 import { useForm } from 'react-hook-form';
 import { AUTH_CONTEXT } from '../../context/AutoProvider';
 import { toast } from 'react-hot-toast';
+import useToken from '../../hooks/useToken';
 
 
 
 const SignUp = () => {
-    const {createUser, updateUser, user,} = useContext(AUTH_CONTEXT);
-
+    const {createUser, updateUser, user} = useContext(AUTH_CONTEXT);
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
+
+    const [useCreatedEmail, setUserCreatedEmail] = useState('')
+    
+    //custom hook
+    const [token] = useToken(useCreatedEmail);
+
 
     const onSubmit = data => {
         createUser(data.email, data.password)
         .then((userCredential) => {
-            // Signed in 
-
+            
             //creating user object for update Name
             const userInfo = {
                 displayName: data.name
-            }
+            };
+            
             //updating user information
             updateUser(userInfo)
-            .then(() => {})
-            .catch((error) => { console.log(error.message) });
-            
-            toast.success("User Created");
-            reset();
-
-            
+            .then(() => {
+                //userCollection
+                saveUserToDB(data.name, data.email, data.role );
+            })
+            .catch((error) => { toast.error(error.message) }); 
           })
           .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            // ..
+            toast.error(error.message)
           });
+    };
+
+    //saving user to database
+    const saveUserToDB = (name, email, role) =>{
+        const user = {name, email, role};
+
+        fetch('http://localhost:5000/users', {
+            method: "POST",
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data =>{
+            if(data.acknowledged){
+                setUserCreatedEmail(data.email);
+                toast.success("User Created Successfully");
+            reset();
+            };  
+        })
     }
 
-    console.log(user);
+    
     return (
         <div className='login-section'>
             <div className='form-head' >

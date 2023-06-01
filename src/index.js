@@ -5,13 +5,22 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AutoProvider from './context/AutoProvider';
+import {
+  QueryClient,
+  QueryClientProvider,
+} from 'react-query'
+
+
+const queryClient = new QueryClient()
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <AutoProvider>
-      <App />
-    </AutoProvider>
+     <QueryClientProvider client={queryClient}>
+      <AutoProvider>
+        <App />
+      </AutoProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );
 

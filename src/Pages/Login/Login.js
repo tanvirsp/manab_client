@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './Login.css';
 import logo from '../../Assets/logo_icon.png'
 import { useForm } from "react-hook-form";
 import { AUTH_CONTEXT } from '../../context/AutoProvider';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import useToken from '../../hooks/useToken';
 
 const Login = () => {
 
@@ -12,17 +13,33 @@ const Login = () => {
     const nagivate = useNavigate();
 
     const { register, handleSubmit, watch, formState: { errors }, reset } = useForm();
+
+    const [loginEmail, setLoginEmail] = useState('');
+    
+    const [token] = useToken(loginEmail);
+
+    
+    if(loading){
+        return <div className="spinner-border text-danger position-absolute top-50 start-50" role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </div>   
+    }
+
+
+    if(token){
+        nagivate('/');
+    } 
     
 
     const onSubmit = data => {
         loginUser(data.email, data.password)
         .then((userCredential) => {
             // Signed in 
-            const user = userCredential.user;
-            console.log(user);
+            setLoginEmail(data.email);
+            
             reset();
             toast.success('Successfully Login');
-            nagivate('/');
+            
           })
           .catch((error) => {
             const errorCode = error.code;

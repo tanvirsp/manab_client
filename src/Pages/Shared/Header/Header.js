@@ -1,11 +1,15 @@
 import React from 'react';
-import img from '../../../Assets/006.jpg'
+import {FaBars} from "react-icons/fa";
+import logo  from '../../../Assets/logo.png';
+import './Header.css';
 
-const Header = () => {
+const Header = ({handleMobileMenu}) => {
     return (
-        <section className=' header-section shadow-sm p-3 mb-1 bg-body '>
-            <img className='avatar' src={img } alt="" />
-            <span className='text-primary ms-2'>Mir Raisul Tanvir</span>
+        <section className='header-menu'>
+             <div className='d-flex justify-content-between align-items-center shadow-sm px-5 py-3 mb-1 bg-body'>
+                <div className='humbergar' onClick={handleMobileMenu}><FaBars /></div>
+                <div><img className='mobile-logo' src={logo} alt="Logo" /></div>
+             </div>
         </section>
     );
 };

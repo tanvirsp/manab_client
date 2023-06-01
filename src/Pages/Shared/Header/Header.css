@@ -1,0 +1,26 @@
+
+.mobile-logo {
+    height: 45px;
+}
+
+.header-menu  {
+    display: none;
+
+}
+
+@media only screen and (max-width: 1250px){ 
+    .header-menu  {
+        display: block;
+    }
+
+    .humbergar svg {
+        font-size: 25px;
+        color: rgb(29, 29, 29);
+        cursor: pointer;
+        
+    }
+    .humbergar svg:hover {
+        color: red
+    }
+    
+}

@@ -8,6 +8,7 @@ import Login from "../../Pages/Login/Login";
 import FullWidth from "../../Layout/FullWidth";
 import SignUp from "../../Pages/SignUp/SignUp";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import AllUsers from "../../Pages/AllUsers/AllUsers";
 
 const router = createBrowserRouter([
     {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
             {
                 path:'/signUp',
                 element: <SignUp />
+            },
+            {
+                path:'/allUsers',
+                element: <AllUsers />
             }
             
 
